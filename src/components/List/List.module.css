@@ -1,0 +1,10 @@
+.container {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 500px;
+  list-style: none;
+}
+
+.container li + li {
+  margin-top: 1rem;
+}

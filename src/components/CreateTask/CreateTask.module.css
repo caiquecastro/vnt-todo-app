@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  gap: 30px;
+}
+
+.container input {
+  padding: 10px;
+}
+
+.container button {
+  width: 40px;
+  height: 40px;
+  background: var(--color-purple-2);
+  color: var(--color-white-1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.container button:hover {
+  opacity: 0.8;
+}
