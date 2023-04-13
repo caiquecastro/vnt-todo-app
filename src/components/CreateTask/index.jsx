@@ -1,16 +1,21 @@
 import { useState } from "react";
 import styles from "./CreateTask.module.css";
+import { useAppContext } from "../../hooks/useAppContext";
+import { api } from "../../services/api";
 
-export function CreateTask({ tasks, setTasks }) {
+export function CreateTask() {
   const [taskName, setTaskName] = useState("");
 
-  function handleSubmit(event) {
+  const { setTasks } = useAppContext();
+
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    setTasks(prev => [...prev, {
-      id: prev.length + 1,
+    const { data: newTask } = await api.post("/tasks", {
       name: taskName
-    }])
+    })
+
+    setTasks(prev => [...prev, newTask])
 
     setTaskName("")
   }

@@ -1,10 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./Router";
+import { AppContextProvider } from "./contexts/AppContext";
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <AppContextProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </AppContextProvider>
   );
 }

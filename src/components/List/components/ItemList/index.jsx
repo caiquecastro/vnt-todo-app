@@ -1,13 +1,21 @@
 import styles from "./ItemList.module.css";
 
-export function ItemList(props) {
-  function handleRemove() {
-    alert(`Ação pra remover o item ${props.name}`);
+import { useAppContext } from "../../../../hooks/useAppContext";
+import { api } from "../../../../services/api";
+
+export function ItemList({ name, id }) {
+  const { setTasks } = useAppContext();
+
+  async function handleRemove() {
+    if (confirm(`Tem certeza que deseja remover o item ${name}?`)) {
+      await api.delete(`/tasks/${id}`);
+      setTasks((tasks) => tasks.filter((task) => task.id !== id));
+    }
   }
 
   return (
     <li className={styles.container}>
-      <strong>{props.name}</strong>
+      <strong>{name}</strong>
       <button onClick={handleRemove}>-</button>
     </li>
   );
